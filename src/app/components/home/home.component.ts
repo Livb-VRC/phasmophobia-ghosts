@@ -1,6 +1,7 @@
 import { GhostsService } from './../../services/ghosts/ghosts.service';
 import { Component, OnInit } from '@angular/core';
 import { Ghost } from './../../models/Ghost';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,38 @@ import { Ghost } from './../../models/Ghost';
 })
 export class HomeComponent implements OnInit {
   ghosts: Ghost[];
-  clues: Ghost;
+  filteredGhosts: Ghost[];
+  clues: Ghost = {
+    spirit_box: false,
+    fingerprints: false,
+    freezing_temperature: false,
+    ghost_writting: false,
+    emf_level_5: false,
+    ghost_orb: false,
+  } as Ghost;
 
   constructor(public ghostService: GhostsService) {}
 
   ngOnInit(): void {
     this.ghostService.ghosts.subscribe((response) => {
       this.ghosts = response as Ghost[];
-      console.log(this.ghosts);
+      this.filteredGhosts = this.ghosts;
     });
+  }
+
+  onChangeClue() {
+    this.filteredGhosts = this.ghosts.filter((ghost: Ghost) => {
+      return this._checkClue(ghost);
+    });
+  }
+
+  _checkClue(ghost: Ghost) {
+    for (let [key, value] of Object.entries(this.clues)) {
+      // if clue attribute is true but same ghost attribute is false then it does not match
+      if (value && !ghost[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 }
