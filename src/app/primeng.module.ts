@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MegaMenuModule } from 'primeng/megamenu';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ButtonModule, MegaMenuModule],
-  exports: [ButtonModule, MegaMenuModule],
+  imports: [],
+  exports: [ButtonModule, MegaMenuModule, DataViewModule],
 })
 export class PrimengModule {}

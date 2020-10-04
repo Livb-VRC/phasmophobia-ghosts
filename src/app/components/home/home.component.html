@@ -1,2 +1,33 @@
-<p>home works!</p>
-<button type="button" pButton label="PrimeNG"></button>
+<div class="card">
+  <p-dataView [value]="ghosts" layout="grid">
+    <ng-template pTemplate="header">
+      <div style="font-size: 120%; text-align: center">List of ghosts</div>
+    </ng-template>
+
+    <ng-template let-ghost pTemplate="gridItem">
+      <div class="p-col-12 p-md-4">
+        <div class="product-grid-item card">
+          <div class="center bigger bold">
+            <div>
+              <span>{{ ghost.name | titlecase }}</span>
+            </div>
+          </div>
+          <div class="product-grid-item-content">
+            <img [src]="ghost.img_url" [alt]="ghost.name" class="myImg" />
+            <div class="product-description bold green">
+              {{ ghost.weakness }}
+            </div>
+            <div class="product-description bold red">{{ ghost.strength }}</div>
+          </div>
+          <div class="product-grid-item-bottom">
+            <div>{{ ghost.description }}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <p-footer>
+      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+    </p-footer>
+  </p-dataView>
+</div>
