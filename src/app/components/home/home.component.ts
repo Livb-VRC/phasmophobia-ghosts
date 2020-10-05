@@ -24,18 +24,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.ghostService.ghosts.subscribe((response) => {
-      this.ghosts = response as Ghost[];
+      this.ghosts = (response as Ghost[]).sort((a, b) => {
+        return a.name > b.name ? 1 : -1;
+      });
+
       this.filteredGhosts = this.ghosts;
     });
   }
 
   onChangeClue() {
     this.filteredGhosts = this.ghosts.filter((ghost: Ghost) => {
-      return this._checkClue(ghost);
+      return this._checkClueMatches(ghost);
     });
   }
 
-  _checkClue(ghost: Ghost) {
+  private _checkClueMatches(ghost: Ghost) {
     for (let [key, value] of Object.entries(this.clues)) {
       // if clue attribute is true but same ghost attribute is false then it does not match
       if (value && !ghost[key]) {

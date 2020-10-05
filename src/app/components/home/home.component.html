@@ -1,5 +1,12 @@
 <div class="card">
   <p-dataView [value]="filteredGhosts" layout="grid">
+    <!-- <p-dropdown
+      [options]="sortOptions"
+      [(ngModel)]="sortKey"
+      placeholder="Sort By"
+      (onChange)="onSortChange($event)"
+      [style]="{ 'min-width': '15em' }"
+    ></p-dropdown> -->
     <ng-template pTemplate="header">
       <div style="font-size: 140%; text-align: center">List of ghosts</div>
       <br />
@@ -11,59 +18,59 @@
           <p-checkbox
             [(ngModel)]="clues.ghost_orb"
             binary="true"
-            inputId="binary"
+            inputId="ghost_orb"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">Ghost orb</label>
+          <label for="ghost_orb">Ghost orb</label>
         </div>
 
         <div class="p-col p-field-checkbox">
           <p-checkbox
             [(ngModel)]="clues.ghost_writting"
             binary="true"
-            inputId="binary"
+            inputId="ghost_writting"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">Ghost writting</label>
+          <label for="ghost_writting">Ghost writting</label>
         </div>
 
         <div class="p-col p-field-checkbox">
           <p-checkbox
             [(ngModel)]="clues.fingerprints"
             binary="true"
-            inputId="binary"
+            inputId="fingerprints"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">Fingerprints</label>
+          <label for="fingerprints">Fingerprints</label>
         </div>
 
         <div class="p-col p-field-checkbox">
           <p-checkbox
             [(ngModel)]="clues.emf_level_5"
             binary="true"
-            inputId="binary"
+            inputId="emf_level_5"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">EMF level 5</label>
+          <label for="emf_level_5">EMF level 5</label>
         </div>
 
         <div class="p-col p-field-checkbox">
           <p-checkbox
             [(ngModel)]="clues.freezing_temperature"
             binary="true"
-            inputId="binary"
+            inputId="freezing_temperature"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">Freezing temperatures</label>
+          <label for="freezing_temperature">Freezing temperatures</label>
         </div>
         <div class="p-col p-field-checkbox">
           <p-checkbox
             [(ngModel)]="clues.spirit_box"
             binary="true"
-            inputId="binary"
+            inputId="spirit_box"
             (onChange)="onChangeClue()"
           ></p-checkbox>
-          <label for="binary">Spirit box</label>
+          <label for="spirit_box">Spirit box</label>
         </div>
       </div>
     </ng-template>
@@ -92,8 +99,8 @@
       </div>
     </ng-template>
 
-    <p-footer>
+    <!-- <p-footer>
       <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-    </p-footer>
+    </p-footer> -->
   </p-dataView>
 </div>
